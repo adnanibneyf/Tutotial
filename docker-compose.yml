@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: tutorial-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    ports:
+      - '4000:4000'
+    # Optional: mount your dev.db so data persists outside the container
+    volumes:
+      - ./backend/dev.db:/usr/src/app/dev.db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: tutorial-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'

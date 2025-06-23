@@ -1,0 +1,16 @@
+# Node modules & logs
+node_modules
+npm-debug.log
+
+# Build artifacts
+backend/dist
+frontend/dist
+frontend/build
+
+# Local environment & DB
+.env
+backend/dev.db
+
+# Docker files & compose (if you add one)
+Dockerfile*
+docker-compose*.yml
